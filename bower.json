@@ -1,0 +1,17 @@
+{
+  "name": "Madreando",
+  "version": "0.0.0",
+  "homepage": "https://github.com/begoc/madreando",
+  "description": "Blog",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "vendor/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "startbootstrap-clean-blog": "git@github.com:IronSummitMedia/startbootstrap-clean-blog.git#~1.0.3"
+  }
+}
