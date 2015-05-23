@@ -13,4 +13,12 @@ var elixir = require('laravel-elixir');
 
 elixir(function(mix) {
     mix.less('app.less');
+
+    mix.copy('vendor/bower_components/startbootstrap-clean-blog/fonts', 'public/fonts')
+    mix.copy('vendor/bower_components/startbootstrap-clean-blog/css/bootstrap.min.css', 'public/css/bootstrap.min.css')
+    mix.copy('vendor/bower_components/startbootstrap-clean-blog/css/clean-blog.min.css', 'public/css/clean-blog.min.css')
+
+    mix.copy('vendor/bower_components/startbootstrap-clean-blog/js/jquery.js', 'public/js/jquery.js')
+    mix.copy('vendor/bower_components/startbootstrap-clean-blog/js/bootstrap.min.js', 'public/js/bootstrap.min.js')
+    mix.copy('vendor/bower_components/startbootstrap-clean-blog/js/clean-blog.min.js', 'public/js/clean-blog.min.js')
 });

@@ -1,48 +1,64 @@
-<html>
-	<head>
-		<title>Laravel</title>
-		
-		<link href='//fonts.googleapis.com/css?family=Lato:100' rel='stylesheet' type='text/css'>
+@extends('site')
 
-		<style>
-			body {
-				margin: 0;
-				padding: 0;
-				width: 100%;
-				height: 100%;
-				color: #B0BEC5;
-				display: table;
-				font-weight: 100;
-				font-family: 'Lato';
-			}
-
-			.container {
-				text-align: center;
-				display: table-cell;
-				vertical-align: middle;
-			}
-
-			.content {
-				text-align: center;
-				display: inline-block;
-			}
-
-			.title {
-				font-size: 96px;
-				margin-bottom: 40px;
-			}
-
-			.quote {
-				font-size: 24px;
-			}
-		</style>
-	</head>
-	<body>
-		<div class="container">
-			<div class="content">
-				<div class="title">Laravel 5</div>
-				<div class="quote">{{ Inspiring::quote() }}</div>
+@section('content')
+<!-- Main Content -->
+<div class="container">
+	<div class="row">
+		<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+			<div class="post-preview">
+				<a href="post.html">
+					<h2 class="post-title">
+						Man must explore, and this is exploration at its greatest
+					</h2>
+					<h3 class="post-subtitle">
+						Problems look mighty small from 150 miles up
+					</h3>
+				</a>
+				<p class="post-meta">Posted by <a href="#">Start Bootstrap</a> on September 24, 2014</p>
 			</div>
+			<hr>
+			<div class="post-preview">
+				<a href="post.html">
+					<h2 class="post-title">
+						I believe every human has a finite number of heartbeats. I don't intend to waste any of mine.
+					</h2>
+				</a>
+				<p class="post-meta">Posted by <a href="#">Start Bootstrap</a> on September 18, 2014</p>
+			</div>
+			<hr>
+			<div class="post-preview">
+				<a href="post.html">
+					<h2 class="post-title">
+						Science has not yet mastered prophecy
+					</h2>
+					<h3 class="post-subtitle">
+						We predict too much for the next year and yet far too little for the next ten.
+					</h3>
+				</a>
+				<p class="post-meta">Posted by <a href="#">Start Bootstrap</a> on August 24, 2014</p>
+			</div>
+			<hr>
+			<div class="post-preview">
+				<a href="post.html">
+					<h2 class="post-title">
+						Failure is not an option
+					</h2>
+					<h3 class="post-subtitle">
+						Many say exploration is part of our destiny, but it’s actually our duty to future generations.
+					</h3>
+				</a>
+				<p class="post-meta">Posted by <a href="#">Start Bootstrap</a> on July 8, 2014</p>
+			</div>
+			<hr>
+			<!-- Pager -->
+			<ul class="pager">
+				<li class="next">
+					<a href="#">Older Posts &rarr;</a>
+				</li>
+			</ul>
 		</div>
-	</body>
-</html>
+	</div>
+</div>
+
+<hr>
+@endsection
