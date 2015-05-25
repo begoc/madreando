@@ -21,4 +21,10 @@ elixir(function(mix) {
     mix.copy('vendor/bower_components/startbootstrap-clean-blog/js/jquery.js', 'public/js/jquery.js')
     mix.copy('vendor/bower_components/startbootstrap-clean-blog/js/bootstrap.min.js', 'public/js/bootstrap.min.js')
     mix.copy('vendor/bower_components/startbootstrap-clean-blog/js/clean-blog.min.js', 'public/js/clean-blog.min.js')
+
+    mix.scripts([
+        'app.js'
+    ], 'public/js/app.js');
+
+    mix.version(['public/js/app.js']);
 });

@@ -16,7 +16,8 @@ class CreateParagraphsTable extends Migration {
 		{
 			$table->increments('id');
 			$table->unsignedInteger('article_id');
-			$table->string('text');
+			$table->string('headline');
+			$table->text('text');
 			$table->timestamps();
 
 			$table->foreign('article_id')

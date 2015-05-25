@@ -13,9 +13,24 @@
 
 Route::get('/', 'WelcomeController@index');
 
-Route::get('admin', 'AdminController@index');
-
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 ]);
+
+Route::group(['prefix' => 'admin'], function()
+{
+	Route::get('', [
+		'as' => 'admin', 'uses' => 'AdminController@index'
+	]);
+
+	Route::group(['prefix' => 'article'], function()
+	{
+		Route::get('edit/{id?}', [
+			'as' => 'admin.article.edit', 'uses' => 'Article\ArticleController@edit'
+		]);
+		Route::post('save', [
+			'as' => 'admin.article.save', 'uses' => 'Article\ArticleController@save'
+		]);
+	});
+});

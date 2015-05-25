@@ -7,7 +7,7 @@ class Article extends Model
     protected $table = 'articles';
 
     protected $fillable = [
-        'title',
+        'title'
     ];
 
     protected $dates = [

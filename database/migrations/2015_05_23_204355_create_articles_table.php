@@ -19,6 +19,7 @@ class CreateArticlesTable extends Migration {
 			$table->unsignedInteger('created_by');
 			$table->tinyInteger('published');
 			$table->timestamp('published_at');
+			$table->unsignedInteger('viewed');
 			$table->timestamps();
 
 			$table->foreign('created_by')
