@@ -1,21 +1,42 @@
 $(function () {
+    $('#editUrlButton').click(function () {
+        if ($('#editUrlButton').attr('aria-expanded') == 'false') {
+            $('#editUrlButton').html('Generar manualmente')
+        } else {
+            $('#editUrlButton').html('Generar automáticamente')
+        }
+    })
+
     $('#add-paragraph').click(function () {
         var num = $('#num-paragraphs').html();
 
         num ++;
 
         $('#paragraphs-editor').append(
-            $("<div>", {class: "row"}).append(
+            $("<div>", {
+                class: "row",
+                id: "paragraph_" + num
+            }).append(
                 $("<div>", {class: "col-lg-12"}).append(
-                    $("<div>", {class: "row"}).append(
-                        $("<div>", {class: "col-sm-2"}).append(
-                            $("<h3>", {class: "text-uppercase"}).append(
+                    $("<div>", {class: "row paragraph-top"}).append(
+                        $("<div>", {class: "col-sm-12"}).append(
+                            $("<h3>", {class: "text-uppercase col-sm-2"}).append(
                                 $("<small>").html("Párrafo " + num)
+                            )
+                        ).append(
+                            $("<button>", {
+                                class: "close",
+                                type: "button",
+                                'aria-label': "Close"
+                            }).click(function () {
+                                $("#paragraph_" + num).remove()
+                            }).append(
+                                $("<span>", {'aria-hidden': true}).html("&times;")
                             )
                         )
                     )
                 ).append(
-                    $("<div>", {class: "row"}).append(
+                    $("<div>", {class: "row paragraph-content"}).append(
                         $("<div>", {class: "col-sm-12"}).append(
                             $("<div>", {class: "form-group"}).append(
                                 $("<label>", {
@@ -101,6 +122,11 @@ $(function () {
                             )
                         )
                     )
+                ).append(
+                    $("<input>", {
+                        name: "paragraphs[" + num + "][id]",
+                        type: "hidden"
+                    })
                 )
             )
         );

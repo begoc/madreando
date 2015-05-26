@@ -2,12 +2,16 @@
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @property Image image
+ */
 class Paragraph extends Model
 {
     protected $table = 'paragraphs';
 
     protected $fillable = [
-        'text'
+        'headline',
+        'content'
     ];
 
     public function article()

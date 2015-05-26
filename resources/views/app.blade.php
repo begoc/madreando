@@ -35,7 +35,11 @@
 				<ul class="nav navbar-nav">
 					<li><a href="{{ url('/') }}">Sitio</a></li>
 				</ul>
-
+				@if (!Auth::guest())
+				<ul class="nav navbar-nav">
+					<li><a href="{{ route('admin.article.list') }}">Artículos</a></li>
+				</ul>
+				@endif
 				<ul class="nav navbar-nav navbar-right">
 					@if (!Auth::guest())
 						<li class="dropdown">

@@ -6231,5 +6231,8 @@ label,
 .checkbox label {
   font-weight: 300;
 }
+div[id^="paragraph_"] div div div button {
+  margin-top: 20px;
+}
 
 /*# sourceMappingURL=app.css.map */

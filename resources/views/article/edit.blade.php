@@ -2,26 +2,50 @@
 
 @section('content')
     <div class="container">
+        <div class="row">
+            @if ($errors->any())
+            <div class="col-lg-12">
+                    @foreach ($errors->all() as $error)
+                        <div class="alert alert-danger" role="alert">
+                            {{$error}}
+                        </div>
+                    @endforeach
+            </div>
+            @endif
+
+            @if (isset($info) && $info)
+                <div class="col-lg-12">
+                    @if (isset($info) && $info)
+                        <div class="alert alert-info" role="alert">
+                            {{$info}}
+                        </div>
+                    @endif
+                </div>
+            @endif
+            <!-- /.col-lg-12 -->
+        </div>
         {!! Form::open(['class' => 'form-horizontal', 'route' => 'admin.article.save']) !!}
         <div class="row">
             <div class="col-md-8">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Editar Articulo</div>
+                    <div class="panel-heading">Editar Artículo</div>
 
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    {!! Form::label('title', 'Titulo', ['class' => 'col-sm-2 control-label text-left']) !!}
+                                    {!! Form::label('title', 'Título', ['class' => 'col-sm-2 control-label text-left']) !!}
                                     <div class="col-sm-10">
-                                        {!! Form::text('title', $article->title, ['id' => 'title', 'class' => 'form-control', 'placeholder' => 'Titulo']) !!}
+                                        {!! Form::text('title', $article->title, ['id' => 'title', 'class' => 'form-control', 'placeholder' => 'Título']) !!}
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-12" id="paragraphs-editor">
-                                @include('article.paragraph', ['num' => 1, 'content' => null, 'uri' => null])
+                                @foreach($article->paragraphs as $num => $paragraph)
+                                    @include('article.paragraph', ['num' => ($num + 1), 'paragraph' => $paragraph])
+                                @endforeach
                             </div>
                         </div>
                         <div class="row">
@@ -29,7 +53,7 @@
                                 <button id="add-paragraph" type="button" class="btn btn-default btn-sm">
                                     <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Párrafo
                                 </button>
-                                <span id="num-paragraphs" class="hidden">1</span>
+                                <span id="num-paragraphs" class="hidden">{{count($article->paragraphs)}}</span>
                             </div>
                         </div>
                     </div>
@@ -40,13 +64,28 @@
                     <div class="panel-heading">Metadata</div>
 
                     <div class="panel-body">
-                        @include('article.metadata')
+                        @include('article.metadata', ['metadata' => $article->metadata])
                     </div>
                 </div>
             </div>
         </div>
         <div class="row">
-            @include('buttons.form')
+            {!! Form::hidden('id', $article->id) !!}
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <div class="col-sm-offset-8 col-sm-2 text-right">
+                        {!! Form::button('Guardar', [
+                        'id' => 'save',
+                        'type' => 'submit',
+                        'class' => 'btn btn-outline btn-success btn-lg',
+                        'data-loading-text' => 'Guradando ...'
+                        ]) !!}
+                    </div>
+                    <div class="col-sm-2">
+                        <a href="{{route('admin.article.list')}}" class="btn btn-outline btn-default btn-lg" role="button">Cancelar</a>
+                    </div>
+                </div>
+            </div>
         </div>
         {!! Form::close()  !!}
     </div>

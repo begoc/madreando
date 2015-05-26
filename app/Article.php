@@ -2,6 +2,11 @@
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @property int id
+ * @property Paragraph[] paragraphs
+ * @property Metadata metadata
+ */
 class Article extends Model
 {
     protected $table = 'articles';
@@ -23,4 +28,9 @@ class Article extends Model
     {
         return $this->hasOne('App\Metadata');
     }
+
+    /*public function createdBy()
+    {
+        return $this->hasOne('App\User');
+    }*/
 }

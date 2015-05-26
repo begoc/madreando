@@ -26,11 +26,17 @@ Route::group(['prefix' => 'admin'], function()
 
 	Route::group(['prefix' => 'article'], function()
 	{
+		Route::get('', [
+			'as' => 'admin.article.list', 'uses' => 'Article\ArticleController@index'
+		]);
 		Route::get('edit/{id?}', [
 			'as' => 'admin.article.edit', 'uses' => 'Article\ArticleController@edit'
 		]);
 		Route::post('save', [
 			'as' => 'admin.article.save', 'uses' => 'Article\ArticleController@save'
+		]);
+		Route::get('remove/{id?}', [
+			'as' => 'admin.article.remove', 'uses' => 'Article\ArticleController@remove'
 		]);
 	});
 });

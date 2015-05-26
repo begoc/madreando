@@ -6,6 +6,8 @@ class Metadata extends Model
 {
     protected $table = 'metadata';
 
+    public $timestamps = false;
+
     protected $fillable = [
         'title',
         'uri',
@@ -13,7 +15,7 @@ class Metadata extends Model
         'keywords'
     ];
 
-    public function Article()
+    public function article()
     {
         return $this->belongsTo('App\Article');
     }
