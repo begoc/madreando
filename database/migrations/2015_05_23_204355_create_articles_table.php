@@ -27,9 +27,9 @@ class CreateArticlesTable extends Migration {
 				->references('id')->on('sections')
 				->onDelete('cascade');
 
-			/*$table->foreign('created_by')
+			$table->foreign('created_by')
 				->references('id')->on('users')
-				->onDelete('cascade');*/
+				->onDelete('cascade');
 		});
 	}
 

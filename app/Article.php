@@ -39,8 +39,8 @@ class Article extends Model
         return $this->belongsTo('App\Section');
     }
 
-    /*public function createdBy()
+    public function createdBy()
     {
-        return $this->hasOne('App\User');
-    }*/
+        return $this->belongsTo('App\User', 'created_by');
+    }
 }

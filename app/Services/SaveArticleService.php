@@ -9,9 +9,21 @@ use App\Paragraph;
 
 use App\Section;
 use Illuminate\Support\Str;
+use Illuminate\Contracts\Auth\Guard;
+
 
 class SaveArticleService
 {
+    /**
+     * @var Guard
+     */
+    protected $auth;
+
+    public function __construct(Guard $auth)
+    {
+        $this->auth = $auth;
+    }
+
     public function save(array $data)
     {
         /** @var Article $article */
@@ -25,6 +37,8 @@ class SaveArticleService
             $section = Section::find($data['section_id']);
 
             $article->section()->associate($section);
+
+            $article->createdBy()->associate($this->auth->user());
 
             $article->save();
         }

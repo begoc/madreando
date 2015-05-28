@@ -11,6 +11,10 @@ use Illuminate\Contracts\Auth\Guard;
 
 class ArticleController extends Controller
 {
+    /**
+     * @var Guard
+     */
+    protected $auth;
 
     public function __construct(Guard $auth)
     {
