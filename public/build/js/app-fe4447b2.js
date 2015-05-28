@@ -1,11 +1,11 @@
 $(function () {
-    $('#editUrlButton').click(function () {
-        if ($('#editUrlButton').attr('aria-expanded') == 'false') {
-            $('#editUrlButton').html('Generar manualmente')
-        } else {
-            $('#editUrlButton').html('Generar automáticamente')
-        }
-    })
+    $("div[id^='paragraph_']").each(function () {
+        var paragraph = $(this);
+
+        paragraph.find('div > div > div > button').click(function () {
+            paragraph.remove()
+        })
+    });
 
     $('#add-paragraph').click(function () {
         var num = $('#num-paragraphs').html();
@@ -71,13 +71,15 @@ $(function () {
                         ).append(
                             $("<div>", {class: "form-group"}).append(
                                 $("<div>", {class: "col-sm-12"}).append(
-                                    $("<img>", {class: "img-rounded"})
+                                    $("<div>", {class: "form-group"}).append(
+                                        $("<div>", {class: "col-sm-12"})
+                                    )
                                 )
                             ).append(
                                 $("<div>", {class: "col-sm-6"}).append(
                                     $("<input>", {
                                         type: "file",
-                                        name: "paragraphs[" + num + "][image][uri]",
+                                        name: "paragraphs[" + num + "][image][file]",
                                         class: "col-sm-12",
                                         autocomplete: "off",
                                         id: "paragraph_image_uri_" + num

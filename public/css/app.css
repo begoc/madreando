@@ -6234,5 +6234,8 @@ label,
 div[id^="paragraph_"] div div div button {
   margin-top: 20px;
 }
+img.img-rounded {
+  width: 20%;
+}
 
 /*# sourceMappingURL=app.css.map */

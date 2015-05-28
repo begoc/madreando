@@ -24,7 +24,7 @@
             @endif
             <!-- /.col-lg-12 -->
         </div>
-        {!! Form::open(['class' => 'form-horizontal', 'route' => 'admin.article.save']) !!}
+        {!! Form::open(['class' => 'form-horizontal', 'route' => 'admin.article.save', 'files' => true]) !!}
         <div class="row">
             <div class="col-md-8">
                 <div class="panel panel-default">
@@ -43,7 +43,7 @@
                         </div>
                         <div class="row">
                             <div class="col-lg-12" id="paragraphs-editor">
-                                @foreach($article->paragraphs as $num => $paragraph)
+                                @foreach($article->paragraphs->all() as $num => $paragraph)
                                     @include('article.paragraph', ['num' => ($num + 1), 'paragraph' => $paragraph])
                                 @endforeach
                             </div>
@@ -71,6 +71,7 @@
         </div>
         <div class="row">
             {!! Form::hidden('id', $article->id) !!}
+            {!! Form::hidden('section_id', data_get($article, 'section_id', $sectionId)) !!}
             <div class="col-sm-12">
                 <div class="form-group">
                     <div class="col-sm-offset-8 col-sm-2 text-right">
@@ -82,7 +83,7 @@
                         ]) !!}
                     </div>
                     <div class="col-sm-2">
-                        <a href="{{route('admin.article.list')}}" class="btn btn-outline btn-default btn-lg" role="button">Cancelar</a>
+                        <a href="{{route('admin.article.list', ['sectionId' => $sectionId])}}" class="btn btn-outline btn-default btn-lg" role="button">Cancelar</a>
                     </div>
                 </div>
             </div>

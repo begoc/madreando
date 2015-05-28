@@ -8,7 +8,7 @@
         </div>
         <div class="form-group">
             {!! Form::label('metadata.uri', 'uri', ['class' => 'col-sm-2 control-label text-left']) !!}
-            @if (!$metadata)
+            @if (!$metadata || $errors->any())
             <div class="col-sm-10">
                 <button id="editUrlButton" class="btn btn-default collapsed" type="button" data-toggle="collapse" data-target="#editUrlPanel" aria-expanded="false" aria-controls="editUrlPanel">
                     Generar automáticamente
@@ -22,19 +22,19 @@
                 </div>
             </div>
             @else
-                <span>{{$metadata->uri}}</span>
+                <span>{{data_get($metadata, 'uri')}}</span>
             @endif
         </div>
         <div class="form-group">
             {!! Form::label('metadata.title', 'Título', ['class' => 'col-sm-2 control-label text-left']) !!}
             <div class="col-sm-10">
-                {!! Form::text('metadata[title]', ($metadata) ? $metadata->title : null, ['id' => 'metadata.title', 'class' => 'form-control', 'placeholder' => 'Título']) !!}
+                {!! Form::text('metadata[title]', data_get($metadata, 'title'), ['id' => 'metadata.title', 'class' => 'form-control', 'placeholder' => 'Título']) !!}
             </div>
         </div>
         <div class="form-group">
             {!! Form::label('metadata.description', 'Descripción', ['class' => 'col-sm-2 control-label text-left']) !!}
             <div class="col-lg-12">
-                {!! Form::textarea('metadata[description]', ($metadata) ? $metadata->description : null, [
+                {!! Form::textarea('metadata[description]', data_get($metadata, 'description'), [
                 'id' => 'metadata.description',
                 'class' => 'form-control',
                 'placeholder' => 'Descripción del artículo',
@@ -46,7 +46,7 @@
         <div class="form-group">
             {!! Form::label('metadata.keywords', 'Palabras claves', ['class' => 'col-sm-2 control-label text-left']) !!}
             <div class="col-sm-10">
-                {!! Form::text('metadata[keywords]', ($metadata) ? $metadata->keywords : null, ['id' => 'metadata.keywords', 'class' => 'form-control', 'placeholder' => 'Palabras claves']) !!}
+                {!! Form::text('metadata[keywords]', data_get($metadata, 'keywords'), ['id' => 'metadata.keywords', 'class' => 'form-control', 'placeholder' => 'Palabras claves']) !!}
             </div>
         </div>
     </div>

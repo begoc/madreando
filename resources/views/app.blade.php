@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Laravel</title>
+	<title>Madreando - Administración</title>
 
 	<link href="{{ asset('/css/app.css') }}" rel="stylesheet">
 
@@ -37,7 +37,9 @@
 				</ul>
 				@if (!Auth::guest())
 				<ul class="nav navbar-nav">
-					<li><a href="{{ route('admin.article.list') }}">Artículos</a></li>
+					@foreach(\App\Section::all() as $section)
+						<li><a href="{{ route('admin.article.list', $section->id) }}">{{$section->name}}</a></li>
+					@endforeach
 				</ul>
 				@endif
 				<ul class="nav navbar-nav navbar-right">

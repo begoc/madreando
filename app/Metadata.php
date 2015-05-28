@@ -2,6 +2,9 @@
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @property string uri
+ */
 class Metadata extends Model
 {
     protected $table = 'metadata';
@@ -18,5 +21,12 @@ class Metadata extends Model
     public function article()
     {
         return $this->belongsTo('App\Article');
+    }
+
+    public static function findByUri($uri)
+    {
+        return static::firstByAttributes([
+            'uri' => $uri
+        ]);
     }
 }

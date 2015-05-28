@@ -2,8 +2,8 @@
     <div class="col-lg-12">
         <div class="row paragraph-top">
             <div class="col-sm-12">
-                <h3 class="text-uppercase col-sm-2"><small>Párrafo {{$num}}</small></h3>
-                <button type="button" class="close hidden" aria-label="Close">
+                <h3 class="text-uppercase col-sm-3"><small>Párrafo {{$num}}</small></h3>
+                <button type="button" class="close" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
@@ -23,13 +23,17 @@
                 </div>
                 <div class="form-group">
                     <div class="col-sm-12">
-                        <img class="img-rounded">
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                @if($paragraph->image)
+                                    <img class="img-rounded" src="{{url('img/articles/') . '/' . $paragraph->image->uri}}">
+                                    {!! Form::hidden('paragraphs[' . $num . '][image][uri]', $paragraph->image->uri) !!}
+                                @endif
+                            </div>
+                        </div>
                     </div>
                     <div class="col-sm-6">
                         {!! Form::file('paragraphs[' . $num . '][image][file]', ['id' => 'paragraph_image_uri_' . $num, 'class' => 'col-sm-12', 'placeholder' => 'Image párrafo ' . $num]) !!}
-                        @if ($paragraph->image)
-                            {!! Form::hidden('paragraphs[' . $num . '][image][uri]', $paragraph->image->uri) !!}
-                        @endif
                     </div>
                     <div class="col-sm-6">
                         <div class="btn-group" data-toggle="buttons">

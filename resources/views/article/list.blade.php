@@ -26,7 +26,7 @@
         </div>
         <div class="row">
             <p>
-                <a href="{{route('admin.article.edit')}}" class="btn btn-default pull-right" role="button">Crear Nuevo Artículo</a>
+                <a href="{{route('admin.article.edit', ['sectionId' => $sectionId])}}" class="btn btn-default pull-right" role="button">Crear Nuevo Artículo</a>
             </p>
         </div>
         <div class="row">
@@ -48,8 +48,8 @@
                         <td>{{$article->published_at->toFormattedDateString()}}</td>
                         <td>{{$article->viewed}}</td>
                         <td>
-                            <a href="{{route('admin.article.edit', ['id' => $article->id])}}" class="btn btn-default btn-sm" role="button">Editar</a>
-                            <a href="{{route('admin.article.remove', ['id' => $article->id])}}" class="btn btn-danger btn-sm" role="button">Eliminar</a>
+                            <a href="{{route('admin.article.edit', ['id' => $article->id, 'sectionId' => $sectionId])}}" class="btn btn-default btn-sm" role="button">Editar</a>
+                            <a href="{{route('admin.article.remove', ['id' => $article->id, 'sectionId' => $sectionId])}}" class="btn btn-danger btn-sm" role="button">Eliminar</a>
                         </td>
                     </tr>
                     @endforeach

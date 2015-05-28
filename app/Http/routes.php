@@ -24,18 +24,19 @@ Route::group(['prefix' => 'admin'], function()
 		'as' => 'admin', 'uses' => 'AdminController@index'
 	]);
 
+	Route::get('section/{sectionId}', [
+		'as' => 'admin.article.list', 'uses' => 'Article\ArticleController@index'
+	]);
+
 	Route::group(['prefix' => 'article'], function()
 	{
-		Route::get('', [
-			'as' => 'admin.article.list', 'uses' => 'Article\ArticleController@index'
-		]);
-		Route::get('edit/{id?}', [
+		Route::get('edit/{sectionId}/{id?}', [
 			'as' => 'admin.article.edit', 'uses' => 'Article\ArticleController@edit'
 		]);
 		Route::post('save', [
 			'as' => 'admin.article.save', 'uses' => 'Article\ArticleController@save'
 		]);
-		Route::get('remove/{id?}', [
+		Route::get('remove/{sectionId}/{id?}', [
 			'as' => 'admin.article.remove', 'uses' => 'Article\ArticleController@remove'
 		]);
 	});
