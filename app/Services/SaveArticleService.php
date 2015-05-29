@@ -39,9 +39,9 @@ class SaveArticleService
             $article->section()->associate($section);
 
             $article->createdBy()->associate($this->auth->user());
-
-            $article->save();
         }
+
+        $article->save();
 
         if ($article->metadata) {
             $article->metadata->fill(array_get($data, 'metadata', []));
@@ -55,8 +55,9 @@ class SaveArticleService
 
             $metadata->article()->associate($article);
 
-            $metadata->save();
         }
+
+        $metadata->save();
 
         $paragraphsData = array_get($data, 'paragraphs', []);
 
@@ -68,9 +69,9 @@ class SaveArticleService
 
             if (!$paragraph->exists) {
                 $paragraph->article()->associate($article);
-
-                $paragraph->save();
             }
+
+            $paragraph->save();
 
             if (array_get($paragraphData, 'image')) {
                 if (array_get($paragraphData, 'image.uri')) {
@@ -88,8 +89,6 @@ class SaveArticleService
                 }
             }
         }
-
-        $article->push();
 
         $paragraphsToRemove = $article->paragraphs->except(array_pluck($paragraphsData, 'id'));
         foreach ($paragraphsToRemove as $paragraph) {
