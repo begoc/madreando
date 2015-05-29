@@ -43,4 +43,9 @@ class Article extends Model
     {
         return $this->belongsTo('App\User', 'created_by');
     }
+
+    public function scopeHomePage($query)
+    {
+        return $query->orderBy('published_at', 'desc')->paginate(5);
+    }
 }

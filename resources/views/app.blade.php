@@ -38,7 +38,7 @@
 				@if (!Auth::guest())
 				<ul class="nav navbar-nav">
 					@foreach(\App\Section::all() as $section)
-						<li><a href="{{ route('admin.article.list', $section->id) }}">{{$section->name}}</a></li>
+						<li @if($section->id == $sectionId)class="active" @endif><a href="{{ route('admin.article.list', $section->id) }}">{{$section->name}}</a></li>
 					@endforeach
 				</ul>
 				@endif

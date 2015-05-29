@@ -25,9 +25,14 @@
                         <!-- /.col-lg-12 -->
         </div>
         <div class="row">
-            <p>
-                <a href="{{route('admin.article.edit', ['sectionId' => $sectionId])}}" class="btn btn-default pull-right" role="button">Crear Nuevo Artículo</a>
-            </p>
+            <div class="col-lg-6">
+                <h3>{{$sectionName}}</h3>
+            </div>
+            <div class="col-lg-6">
+                <p>
+                    <a href="{{route('admin.article.edit', ['sectionId' => $sectionId])}}" class="btn btn-default pull-right" role="button">Crear Nuevo Artículo</a>
+                </p>
+            </div>
         </div>
         <div class="row">
             <table class="table table-hover">

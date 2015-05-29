@@ -23,13 +23,17 @@ class ArticleController extends Controller
         $this->auth = $auth;
     }
 
-    public function index(Request $request, $sectionId)
+    public function index(Request $request, $sectionId = 1)
     {
         $info = $request->session()->get('info');
 
-        $articles = Section::find($sectionId)->articles()->paginate(15);
+        $section = Section::find($sectionId);
 
-        return view('article.list', compact('articles', 'info', 'sectionId'));
+        $articles = $section->articles()->paginate(15);
+
+        $sectionName = $section->name;
+
+        return view('article.list', compact('articles', 'info', 'sectionId', 'sectionName'));
     }
 
     public function edit(Request $request, $sectionId, $id = null)

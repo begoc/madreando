@@ -21,7 +21,7 @@ Route::controllers([
 Route::group(['prefix' => 'admin'], function()
 {
 	Route::get('', [
-		'as' => 'admin', 'uses' => 'AdminController@index'
+		'as' => 'admin', 'uses' => 'Article\ArticleController@index'
 	]);
 
 	Route::get('section/{sectionId}', [

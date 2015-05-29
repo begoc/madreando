@@ -76,6 +76,8 @@ class SaveArticleService
                 if (array_get($paragraphData, 'image.uri')) {
                     if ($paragraph->image) {
                         $paragraph->image->fill(array_get($paragraphData, 'image'));
+
+                        $paragraph->image->save();
                     } else {
                         /** @var Image $image */
                         $image = new Image(array_get($paragraphData, 'image'));

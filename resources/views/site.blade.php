@@ -53,14 +53,13 @@
 				<li>
 					<a href="">Inicio</a>
 				</li>
+				@foreach($sections as $section)
+					<li>
+						<a href="">{{$section->name}}</a>
+					</li>
+				@endforeach
 				<li>
-					<a href="about.html">¿Qué es madreando?</a>
-				</li>
-				<li>
-					<a href="post.html">Reflexiones</a>
-				</li>
-				<li>
-					<a href="contact.html">ANA</a>
+					<a href="">ANA</a>
 				</li>
 			</ul>
 		</div>

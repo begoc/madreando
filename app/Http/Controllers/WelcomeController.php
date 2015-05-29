@@ -1,5 +1,8 @@
 <?php namespace App\Http\Controllers;
 
+use App\Article;
+use App\Section;
+
 class WelcomeController extends Controller {
 
 	/*
@@ -14,23 +17,17 @@ class WelcomeController extends Controller {
 	*/
 
 	/**
-	 * Create a new controller instance.
-	 *
-	 * @return void
-	 */
-	public function __construct()
-	{
-		$this->middleware('guest');
-	}
-
-	/**
 	 * Show the application welcome screen to the user.
 	 *
 	 * @return Response
 	 */
 	public function index()
 	{
-		return view('welcome');
+		$sections = Section::all();
+
+		$articles = Article::homePage();
+
+		return view('welcome', compact('articles', 'sections'));
 	}
 
 }
