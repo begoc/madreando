@@ -18,6 +18,9 @@
 				@if($paragraph->headline)
 				<h2 class="section-heading">{!! $paragraph->headline !!}</h2>
 				@endif
+				@if($paragraph->image)
+					<img src="{{url('/')}}/img/articles/{{$paragraph->image->uri}}" class="media-object paragraph-image @if($paragraph->image->position == 'center') center-block @else pull-{{$paragraph->image->position}} @endif">
+				@endif
 				<p>{!! $paragraph->content !!}</p>
 			@endforeach
 			<!-- Pager -->

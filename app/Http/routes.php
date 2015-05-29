@@ -13,7 +13,9 @@
 
 Route::get('/', 'WelcomeController@index');
 
-Route::get('madreando/{section}/{uri}', 'Article\PostArticleController@index')->where('uri', '.*');;
+Route::get('madreando/{section}/{uri}', 'Article\PostArticleController@index')->where('uri', '.*');
+
+Route::get('madreando/{section}', 'Article\SectionArticleController@index');
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',

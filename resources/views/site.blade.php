@@ -29,6 +29,12 @@
 	<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 	<![endif]-->
 
+	<style>
+		img.paragraph-image {
+			margin: 0.5em 1.5em 1em 0;
+		}
+	</style>
+
 </head>
 
 <body>
@@ -55,12 +61,9 @@
 				</li>
 				@foreach($sections as $section)
 					<li>
-						<a href="{{url('/')}}">{{$section->name}}</a>
+						<a href="/madreando/{{strtolower(urlencode($section->name))}}">{{$section->name}}</a>
 					</li>
 				@endforeach
-				<li>
-					<a href="{{url('/')}}">ANA</a>
-				</li>
 			</ul>
 		</div>
 		<!-- /.navbar-collapse -->
