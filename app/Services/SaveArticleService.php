@@ -45,6 +45,8 @@ class SaveArticleService
 
         if ($article->metadata) {
             $article->metadata->fill(array_get($data, 'metadata', []));
+
+            $article->metadata->save();
         } else {
             $metadata = new Metadata(array_get($data, 'metadata', []));
 
@@ -55,9 +57,8 @@ class SaveArticleService
 
             $metadata->article()->associate($article);
 
+            $metadata->save();
         }
-
-        $metadata->save();
 
         $paragraphsData = array_get($data, 'paragraphs', []);
 
