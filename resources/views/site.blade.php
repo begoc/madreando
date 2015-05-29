@@ -12,10 +12,10 @@
 	<title>Madreando | Reflexiones de dos madres a 2000 km</title>
 
 	<!-- Bootstrap Core CSS -->
-	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="{{url('/')}}/css/bootstrap.min.css" rel="stylesheet">
 
 	<!-- Custom CSS -->
-	<link href="css/clean-blog.min.css" rel="stylesheet">
+	<link href="{{url('/')}}/css/clean-blog.min.css" rel="stylesheet">
 
 	<!-- Custom Fonts -->
 	<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -44,22 +44,22 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="/">Madreando</a>
+			<a class="navbar-brand" href="{{url('/')}}">Madreando</a>
 		</div>
 
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav navbar-right">
 				<li>
-					<a href="">Inicio</a>
+					<a href="{{url('/')}}">Inicio</a>
 				</li>
 				@foreach($sections as $section)
 					<li>
-						<a href="">{{$section->name}}</a>
+						<a href="{{url('/')}}">{{$section->name}}</a>
 					</li>
 				@endforeach
 				<li>
-					<a href="">ANA</a>
+					<a href="{{url('/')}}">ANA</a>
 				</li>
 			</ul>
 		</div>
@@ -68,6 +68,15 @@
 	<!-- /.container -->
 </nav>
 
+<!-- Set your background image for this header on the line below. -->
+<header class="intro-header" style="background-image: url('{{url('/')}}/img/home-bg.jpg'); height: 500px">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+			</div>
+		</div>
+	</div>
+</header>
 <!-- Page Header -->
 @yield('content')
 
@@ -109,13 +118,13 @@
 </footer>
 
 <!-- jQuery -->
-<script src="js/jquery.js"></script>
+<script src="{{url('/')}}/js/jquery.js"></script>
 
 <!-- Bootstrap Core JavaScript -->
-<script src="js/bootstrap.min.js"></script>
+<script src="{{url('/')}}/js/bootstrap.min.js"></script>
 
 <!-- Custom Theme JavaScript -->
-<script src="js/clean-blog.min.js"></script>
+<script src="{{url('/')}}/js/clean-blog.min.js"></script>
 
 </body>
 

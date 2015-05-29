@@ -4,6 +4,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * @property string uri
+ * @property Article article
  */
 class Metadata extends Model
 {
@@ -23,6 +24,10 @@ class Metadata extends Model
         return $this->belongsTo('App\Article');
     }
 
+    /**
+     * @param $uri
+     * @return null|Metadata
+     */
     public static function findByUri($uri)
     {
         return static::firstByAttributes([

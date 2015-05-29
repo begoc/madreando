@@ -13,7 +13,7 @@
 
 Route::get('/', 'WelcomeController@index');
 
-Route::get('{section}/{uri}', 'PostArticleController@index');
+Route::get('{section}/{uri}', 'Article\PostArticleController@index')->where('uri', '.*');;
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',
