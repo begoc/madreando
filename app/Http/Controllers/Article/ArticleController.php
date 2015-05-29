@@ -54,7 +54,7 @@ class ArticleController extends Controller
         return redirect(route('admin.article.edit', ['id' => $article->id, 'sectionId' => $article->section_id]))->with('info', 'Artículo guardado');
     }
 
-    public function remove(Request $request, $id, $sectionId)
+    public function remove(Request $request, $sectionId, $id)
     {
         Article::destroy($id);
 
